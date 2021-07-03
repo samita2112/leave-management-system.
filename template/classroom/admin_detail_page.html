@@ -1,0 +1,24 @@
+{% extends 'classroom/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/newbase.css' %}">
+</head>
+<div class="profile" style="padding-top:10%;">
+  <img src="{% static 'images/profile-background-3.PNG' %}" alt="">
+  <div class="profile-box">
+    
+      <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+    
+    <div class="profile-details">
+      <h1>{{ admin.name }}</h1>
+      <br>
+      <p><i class="far fa-user"></i> Username: {{ admin.user.username }}</p>
+      
+      <p><i class="far fa-phone"></i> Phone: {{ admin.phone }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ admin.email }}</p>
+      <a href="{% url 'classroom:admin_update' pk=user.pk %}"> <p class="edit-button">Edit Profile</p> </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

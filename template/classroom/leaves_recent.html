@@ -1,0 +1,44 @@
+{% extends 'classroom/base.html' %}
+{% block content %}
+
+<div class="container" style="padding-top:10%;" >
+  <div class="jumbotron" >
+{% if leave_list.count == 0 %}
+<h2>No pending leaves.</h2>
+{% else %}
+<h3>Pending Leave list </h3>
+
+<table class='table'>
+  <thead class="thead-dark">
+    <tr>
+		<th scope="col">Sr.no</th>
+      <th scope="col">User</th>
+      <th scope="col">Leave Type</th>
+      <th scope="col">Days</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for leave in leave_list %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+	  
+      <th>{{ leave.user }}</th>
+      <th>{{ leave.leavetype }}</th>
+      <th>{{ leave.leave_days }}</th>
+	  <th>{{ leave.status }}</th>
+      <th> <a class="btn btn-primary" href="{% url 'classroom:userleaveview' leave.id %}">View</a> </th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<br>
+
+{% endif %}
+
+
+</div>
+</div>
+
+{% endblock %}

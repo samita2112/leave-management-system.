@@ -1,0 +1,40 @@
+{% extends "classroom/base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="{% static 'css/newbase.css' %}">
+  <link rel="stylesheet" href="{% static 'css/searchbar.css' %}"> 
+</head>
+
+<div class="student-list" style="padding-top:10%;">
+<div class="container">
+  <form method='GET' action="{% url 'classroom:admin_list' %}">
+    <p>Serch Admin: <input type='search' name='q' placeholder='Search'></p>
+  </form>
+  <div class="row">
+  {% for admin in admin_list %}
+  <div class="col-6 col-md-4">
+  <div class="student-box">
+    <div class="imgBx">
+      {% if forloop.counter0|divisibleby:"2" %}
+      <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+      {% else %}
+      <img src="{% static 'images/login-avatar-2.PNG' %}" alt="">
+      {% endif %}
+    </div>
+    <div class="content">
+      <h3>{{ admin.name }}</h3>
+      <p><i class="far fa-user"></i> Username: {{ admin.user.username }}</p>
+      <p><i class="far fa-phone"></i> Phone: {{ admin.phone }}</p>
+      <p><i class="far fa-phone"></i> Email Id: {{ admin.email }}</p>
+     
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "classroom/base.html" %}
+{% load static %}
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/newbase.css' %}">
+  <link rel="stylesheet" href="{% static 'css/searchbar.css' %}"> 
+</head>
+<div class="student-list"  style="padding-top:10%;">
+<div class="container">
+  {% if messages %}
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+      <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+    {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %}
+  <form method='GET' action="{% url 'classroom:allemployee_list' %}" class="searchme">
+    <p>Search Employee: <input type='search' name='q' placeholder='Search'></p>
+  </form>
+  <div class="row">
+  {% for employee in employee_list %}
+  <div class="col-6 col-md-4">
+  <div class="student-box">
+    <div class="imgBx">
+      {% if forloop.counter0|divisibleby:"2" %}
+      <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+      {% else %}
+      <img src="{% static 'images/login-avatar-2.PNG' %}" alt="">
+      {% endif %}
+     
+    </div>
+    <div class="content">
+      <h3>{{ employee.name }}</h3>
+      <p><i class="far fa-user"></i> Username: {{ employee.user.username }}</p>
+      <p><i class="fal fa-user-tag"></i> Dept name: {{ employee.dept_name }}</p>
+      <p><i class="far fa-phone"></i> Phone: {{ employee.phone }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ employee.email }}</p>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

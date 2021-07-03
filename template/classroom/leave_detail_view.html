@@ -1,0 +1,51 @@
+{% extends "classroom/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container" style='padding-top:10%;'>
+    <div class="jumbotron">
+      {% if  messages %}
+    {% for message in messages %}
+      <div {% if message.tags %} class="{{ message.tags}}"{% endif %}>
+      {{ message }}
+      <button type="button" class="close" id = "override-start"data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+        <h1 style="color:teal" >Leave Application</h1>
+        <p style="font-weight: bolder;font-size:large;padding-left:30%;padding-top:5%;;"> Employee: {{ employee  }}</p>
+      <p style="font-weight: bolder;font-size:large;padding-left:30%;"> StartDate: {{ leave.startdate }}</p>
+      <p style="font-weight: bolder;font-size:large;padding-left:30%;"> Enddate: {{ leave.enddate }}</p>
+      <p style="font-weight: bolder;font-size:large;padding-left:30%;"> Duration: {{leave.leave_days  }}</p>
+      <p style="font-weight: bolder;font-size:large;padding-left:30%;"> Type: {{ leave.leavetype  }}</p>
+      <p style="font-weight: bolder;font-size:large;padding-left:30%;"> Reason: {{ leave.reason}}</p>
+      <p style="font-weight: bolder;font-size:large;padding-left:30%;"> Status: {{ leave.status}}</p>
+       
+      {% if request.user.is_manager  %}
+
+      <section class="row" style="padding-left:30%;padding-top:5%">
+        <section class="col col-lg-4 col-sm-12 col-lg-offset-7 text-center">
+          <div class="btn-group btn-group-justified">
+            {%if leave.leave_approved %}
+            <a href="{% url 'classroom:userleaveunapprove' leave.id %}" class="btn btn-primary" name='unapprove'>UNAPPROVE
+            </a>
+            {% else %}
+            <a href="{% url 'classroom:userleaveapprove' leave.id %}" class="btn btn-primary" name='approve'>APPROVE
+            </a>
+            {% endif %}
+            <a href="{% url 'classroom:userleavecancel' leave.id %}" class="btn btn-info" name='cancel'>CANCEL</a>
+            <a href="{% url 'classroom:reject' leave.id %}" class="btn btn-warning" name='reject'>REJECT</a>  
+          </div>
+        </section>
+      </section>
+
+{% endif %}
+
+    </div>
+</div>
+
+
+ {% endblock %}
+ 

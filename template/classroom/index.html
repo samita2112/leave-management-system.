@@ -1,0 +1,377 @@
+{% extends 'classroom/base.html' %} 
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <style>
+    .divider-custom {
+      margin: 1.25rem 0 1.5rem;
+      width: 100%;
+      display: flex;
+      color: white;
+      justify-content: center;
+      align-items: center;
+    }
+    .divider-custom .divider-custom-line {
+      width: 100%;
+      max-width: 7rem;
+      height: 0.25rem;
+      color: white;
+      border-radius: 1rem;
+      border-color: white;
+    
+    }
+    .divider-custom .divider-custom-line:first-child {
+      margin-right: 1rem;
+      color: white;
+    }
+    .divider-custom .divider-custom-line:last-child {
+      margin-left: 1rem;
+      color: white;
+    }
+    .divider-custom .divider-custom-icon {
+      color: white !important;
+      font-size: 2rem;
+    }
+    .divider-custom.divider-light .divider-custom-line {
+      color: white;
+    }
+    .divider-custom.divider-light .divider-custom-icon {
+      color: white;
+    }
+  </style>
+    
+    <body id="page-top" >
+       
+        <div style="background-image:url('static/images/backk.jpg');padding-top:50%;opacity:40%;" ></div>
+        <header  class=" text-black text-center" >
+            <div class="container d-flex align-items-center flex-column"  >
+                
+                
+                
+                <h1 class="masthead-heading text-uppercase mb-0" style="margin-top:-40%;opacity:100%;font-size:4rem;">Welcome </h1>
+               
+                <div class="divider-custom divider-light" >
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon" ><i class="fas fa-star" style="color:black"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                
+                <p  style="font-weight: bolder;font-size:2rem;">Leave Management Portal</p>
+            </div>
+        </header>
+         <!-- Portfolio Section-->
+         {% if user.is_authenticated %}
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+            
+                {% if user.is_manager%}
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0" style="margin-top:-2%;">Manager</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light" >
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon" ><i class="fas fa-star" style="color:#2c3e50"></i></div>
+                  <div class="divider-custom-line"></div>
+              </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row" style="padding-bottom: 6%; padding-left: 4%;">
+                    
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:leaveslist' %}"><img src="{% static 'images/pen.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Pending Leave list</h5>
+                    </div>
+                  </div>  
+
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:canceleaveslist' %}"><img src="{% static 'images/cancel.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Cancelled leave list</h5>
+                    </div>
+                  </div>  
+
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:leavesrejected' %}"><img src="{% static 'images/reject.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Rejected leave list</h5>
+                    </div>
+                  </div>  
+
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:approveleaveslist' %}"><img src="{% static 'images/approve.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Approved leave list</h5>
+                    </div>
+                  </div>  
+                  
+                  
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:allemployee_list' %}"><img src="{% static 'images/employee.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Employee list</h5>
+                    </div>
+                  </div>
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:admin_list' %}"><img src="{% static 'images/admin.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Admin list</h5>
+                    </div>
+                  </div>
+                  
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:manager_detail' pk=user.pk %}"><img src="{% static 'images/profile.png' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Profile</h5>
+                    </div>
+                   </div>
+
+                   <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:change_password'  %}"><img src="{% static 'images/change.png' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Change Password</h5>
+                    </div>
+                    </div>
+                
+               
+        {% elif user.is_employee%}
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"  style="margin-top:-2%;">Employee</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light" >
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon" ><i class="fas fa-star" style="color:#2c3e50"></i></div>
+                  <div class="divider-custom-line"></div>
+              </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row" style="padding-bottom: 6%; padding-left: 4%;">
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:createleave' %}"><img src="{% static 'images/apply.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Apply a leave</h5>
+                    </div>
+                  </div>  
+
+
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:staffleavetable' %}"><img src="{% static 'images/pending.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Leave list</h5>
+                    </div>
+                  </div>  
+                  
+                  
+                  
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:manager_list' %}"><img src="{% static 'images/manager.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Manager List</h5>
+                    </div>
+                  </div>
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:admin_list' %}"><img src="{% static 'images/admin.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Admin List</h5>
+                    </div>
+                  </div>
+                  
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:employee_detail' pk=user.pk %}"><img src="{% static 'images/profile.png' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Profile</h5>
+                    </div>
+                    </div>
+                  
+                    <div style="padding-left: 5%;padding-top:6%">
+                      <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                          <a href="{% url 'classroom:change_password'  %}"><img src="{% static 'images/change.png' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                        <div class="card-body">
+                          
+                        </div>
+                        <h5 class="card-title" style="text-align:center;">Change Password</h5>
+                      </div>
+                      </div>
+                  
+        {% else %}
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"  style="margin-top:-2%;">Admin</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light" >
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon" ><i class="fas fa-star" style="color:#2c3e50"></i></div>
+                  <div class="divider-custom-line"></div>
+              </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row" style="padding-bottom: 6%; padding-left: 4%;">
+                    
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:ManagerSignUp' %}"><img src="{% static 'images/addd.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Add Manager</h5>
+                    </div>
+                  </div>
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:manager_list' %}"><img src="{% static 'images/manager.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Manager list</h5>
+                    </div>
+                  </div>
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:allemployee_list' %}"><img src="{% static 'images/employee.PNG' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Employee list</h5>
+                    </div>
+                  </div>
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:admin_list' %}"><img src="{% static 'images/admin.jpg' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Admin list</h5>
+                    </div>
+                  </div>
+
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:change_password'  %}"><img src="{% static 'images/change.png' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:13rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;padding-top:13%;">Change Password</h5>
+                    </div>
+                    </div>
+                  
+                  <div style="padding-left: 5%;padding-top:6%">
+                    <div class="card" style="height: 16rem;width: 16rem;border-radius:15px;padding-top:2%;padding-left:2%">
+                        <a href="{% url 'classroom:admin_detail' pk=user.pk %}"><img src="{% static 'images/profile.png' %}" class="card-img-top" alt="..."style="padding-left:2%;border-radius:1%;height:15rem;width: 15rem"></a>
+                      <div class="card-body">
+                        
+                      </div>
+                      <h5 class="card-title" style="text-align:center;">Profile</h5>
+                    </div>
+                  </div>
+                  </div>
+                  
+                {% endif %}
+                
+            </div>
+            
+        </section> 
+        {% endif %} 
+        <!-- About Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container" >
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white" style="margin-top:1%;">Summary</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star" style="color: white;"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="row">
+                  <div class="col-lg-4 mr-auto"><p class="lead">There can be at most 3 admins.
+                    Admin can add managers.
+                    Admin can see manager, admin list and employee list
+                  </p></div>
+                    <div class="col-lg-4 ml-auto"><p class="lead">Employee can apply for leave and see the status of leave
+                      (pending,approve,reject,cancel)
+                     </p></div>
+                    <div class="col-lg-4 mr-auto"><p class="lead">Manager can see the list of pending leaves,rejected leaves,cancellled leaves and perform the required actions on it.
+                      
+                    </p></div>  
+                </div>
+                <!-- About Section Button-->
+                
+                
+            </div>
+           
+        </section>
+        
+        <!-- Footer-->
+        <footer class="footer text-center" style="padding-left:38%;">
+            <div class="container" >
+                
+                    <!-- Footer Location-->
+                    
+                    <div class="col-lg-4" >
+                        <h4 class="text-uppercase mb-4">About </h4>
+                        <p class="lead mb-0">
+                            This is a leave management website created by  Samita Kanojia</p>
+                            
+                      
+                    </div>
+               
+            </div>
+        </footer>
+        
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Contact form JS-->
+        <script src="assets/mail/jqBootstrapValidation.js"></script>
+        <script src="assets/mail/contact_me.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
+{% endblock %}  
+
